@@ -3,6 +3,7 @@ import tkinter
 from tkinter import ttk
 
 def enter_values():
+    listbox_output.delete(0, tkinter.END)
     lower_border = int(entry_low_border.get())
     higher_border = int(entry_high_border.get())
     num_of_slags = int(entry_number_of_slag.get())
@@ -12,7 +13,7 @@ def enter_values():
 
 root = tkinter.Tk()
 root.title("mathapp")
-root.geometry("640x480")
+root.geometry("590x480")
 
 label_low_border = ttk.Label(text="Low border")
 label_low_border.grid(row=0, column=0)
@@ -36,6 +37,6 @@ button_enter_values = ttk.Button(text= "enter border values", command=enter_valu
 button_enter_values.grid(row=2, column=1)
 
 listbox_output = tkinter.Listbox()
-listbox_output.grid(row=3, column=1)
+listbox_output.grid(row=3, column=0, columnspan=3, sticky="nsew", padx=10)
 
 root.mainloop()
