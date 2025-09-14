@@ -29,3 +29,7 @@ It’s a fun way to practice mental math and improve your arithmetic skills!
    ```bash
    git clone https://github.com/your-username/mathapp.git
    cd mathapp
+2. Make sure you have Python 3.13 installed.
+3. Run the app:
+   ```bash
+   python main.py
