@@ -7,26 +7,33 @@ from tkinter import ttk
 correct_answer = ""
 
 def enter_values():
-    label_output_sums.config(text="")
-    lower_border = int(entry_low_border.get())
-    higher_border = int(entry_high_border.get())
-    num_of_slags = int(entry_number_of_slag.get())
-    value = creation_sums.output(lower_border, higher_border, num_of_slags)
-    label_output_sums.config(text= value)
-    label_output_sums.grid(row=3, column=0, columnspan=3)
-    global correct_answer
-    correct_answer = eval(value)
+    if entry_low_border.get().isdigit() and entry_high_border.get().isdigit() and entry_number_of_slag.get().isdigit():
+        label_output_sums.config(text="")
+        lower_border = int(entry_low_border.get())
+        higher_border = int(entry_high_border.get())
+        num_of_slags = int(entry_number_of_slag.get())
+        value = creation_sums.output(lower_border, higher_border, num_of_slags)
+        label_output_sums.config(text= value)
+        label_output_sums.grid(row=3, column=0, columnspan=3)
+        global correct_answer
+        correct_answer = eval(value)
+    else:
+        showinfo(title="Error", message="Entry correct values")
 
 def check_answer():
-    global correct_answer
-    if correct_answer == int(entry_answer.get()):
-        showinfo(title="Info", message="Correct answer!")
+    if entry_answer.get().isdigit():
+        global correct_answer
+        if correct_answer == int(entry_answer.get()):
+            showinfo(title="Info", message="Correct answer!")
+        else:
+            showinfo(title="Info", message="Incorrect answer!")
     else:
-        showinfo(title="Info", message="Incorrect answer!")
+        showinfo(title="Error", message="Entry correct value")
 
 root = tkinter.Tk()
 root.title("mathapp")
 root.geometry("590x220")
+root.config(background="gainsboro")
 
 label_output_sums = ttk.Label(text="Sums here", font=("Times New Roman", 20), wraplength=550)
 
